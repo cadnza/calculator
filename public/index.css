@@ -1,0 +1,30 @@
+#container {
+	width: 2in;
+}
+#keyboard {
+	height: 2in;
+}
+#keyGrid {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns:
+		25%
+		25%
+		25%
+		25%;
+	grid-template-rows:
+		25%
+		25%
+		25%
+		25%;
+}
+button {
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+}
+#viewport {
+	height: 0.5in;
+	width: 100%;
+}
