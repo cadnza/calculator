@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Keyboard extends React.Component {
+
 	constructor(){
 		super();
 		this.state = {
@@ -13,6 +14,7 @@ class Keyboard extends React.Component {
 			]
 		};
 	}
+
 	render(){
 		var buttons = [];
 		var newButton;
@@ -32,9 +34,11 @@ class Keyboard extends React.Component {
 		}
 		return <div id="keyGrid">{buttons}</div>;
 	}
+
 	interpret = label => {
 		console.log(label);
 	}
+
 }
 
 ReactDOM.render(
