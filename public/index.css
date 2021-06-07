@@ -17,14 +17,43 @@
 		25%
 		25%
 		25%
+		25%
 		25%;
 }
 button {
 	width: 100%;
 	height: 100%;
 	font-weight: bold;
+	text-shadow:
+		-0.5px 0.5px 0px white,
+		0.5px 0.5px 0px white,
+		0.5px -0.5px 0px white,
+		-0.5px -0.5px 0px white;
 }
-#viewer {
+#screen {
 	height: 0.5in;
 	width: 100%;
+	text-align: right;
+	font-family: 'Courier New', monospace;
+}
+.digit {
+	background-color: grey;
+}
+#btnC {
+	background-color: darkgoldenrod;
+}
+#btnD {
+	background-color: darkred;
+}
+#btn\= {
+	background-color: dodgerblue;
+}
+#btn\(, #btn\) {
+	background-color: lightgrey;
+}
+#btn\+, #btn\-, #btn\*, #btn\/ {
+	background-color: green;
+}
+#btn\. {
+	background-color: white;
 }
