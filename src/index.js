@@ -9,6 +9,7 @@ class Viewer extends React.Component {
 }
 
 class Keyboard extends React.Component {
+
 	constructor(){
 		super();
 		this.state = {
@@ -21,6 +22,7 @@ class Keyboard extends React.Component {
 			]
 		};
 	}
+
 	render(){
 		var buttons = [];
 		var newButton;
@@ -47,6 +49,7 @@ class Keyboard extends React.Component {
 		}
 		return <div id="keyGrid">{buttons}</div>;
 	}
+
 	interpret = label => {
 		const errMessage = "Err";
 		const scrn = document.getElementById("screen");
@@ -71,6 +74,7 @@ class Keyboard extends React.Component {
 				scrn.value = scrn.value+label;
 		}
 	}
+
 }
 
 ReactDOM.render(
