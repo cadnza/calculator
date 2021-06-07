@@ -19,7 +19,8 @@ class Keyboard extends React.Component {
 				"1","2","3","*",
 				"C","0","D","/",
 				"(",")",".","="
-			]
+			],
+			isShowingAnswer: false
 		};
 	}
 
@@ -53,8 +54,12 @@ class Keyboard extends React.Component {
 	interpret = label => {
 		const errMessage = "Err";
 		const scrn = document.getElementById("screen");
+		scrn.style.color = "black";
 		if(scrn.value===errMessage)
 			scrn.value = "";
+		if(this.state.isShowingAnswer&&String(parseInt(label))===String(label))
+			scrn.value = ""
+		this.setState({isShowingAnswer: false})
 		switch(label){
 			case "C":
 				scrn.value = "";
@@ -63,11 +68,17 @@ class Keyboard extends React.Component {
 				scrn.value = scrn.value.substring(0,scrn.value.length-1);
 				break;
 			case "=":
-				try {
-					scrn.value = String(Function("return "+scrn.value)());
-				}
-				catch(err) {
-					scrn.value = errMessage;
+				if(scrn.value.length){
+					try {
+						scrn.value = String(Function("return "+scrn.value)());
+						scrn.style.color = "blue";
+						this.setState({isShowingAnswer: true})
+					}
+					catch(err) {
+						scrn.value = errMessage;
+						scrn.style.color = "red";
+						return;
+					}
 				}
 				break;
 			default:
