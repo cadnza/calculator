@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Viewer extends React.Component {
-	render(){
+	render() {
 		const viewScreen = <input type="text" disabled id="screen" title="viewTitle"></input>;
 		return viewScreen;
 	}
@@ -10,7 +10,7 @@ class Viewer extends React.Component {
 
 class Keyboard extends React.Component {
 
-	constructor(){
+	constructor() {
 		super();
 		this.state = {
 			btns: [
@@ -24,13 +24,13 @@ class Keyboard extends React.Component {
 		};
 	}
 
-	render(){
+	render() {
 		var buttons = [];
 		var newButton;
 		var buttonClass;
-		for(var i = 0; i<this.state.btns.length; i++){
+		for(var i = 0; i < this.state.btns.length; i++) {
 			const label = this.state.btns[i];
-			if(String(parseInt(label))===String(label))
+			if(String(parseInt(label)) === String(label))
 				buttonClass = "digit";
 			else
 				buttonClass = "nonDigit";
@@ -38,7 +38,7 @@ class Keyboard extends React.Component {
 				<div key={i}>
 					<button
 						op={label}
-						id={"btn"+label}
+						id={"btn" + label}
 						class={buttonClass}
 						onClick={() => this.interpret(label)}
 					>
@@ -46,7 +46,7 @@ class Keyboard extends React.Component {
 					</button>
 				</div>
 			);
-			buttons.push(newButton)
+			buttons.push(newButton);
 		}
 		return <div id="keyGrid">{buttons}</div>;
 	}
@@ -55,24 +55,24 @@ class Keyboard extends React.Component {
 		const errMessage = "Err";
 		const scrn = document.getElementById("screen");
 		scrn.style.color = "black";
-		if(scrn.value===errMessage)
+		if(scrn.value === errMessage)
 			scrn.value = "";
-		if(this.state.isShowingAnswer&&String(parseInt(label))===String(label))
-			scrn.value = ""
-		this.setState({isShowingAnswer: false})
-		switch(label){
+		if(this.state.isShowingAnswer && String(parseInt(label)) === String(label))
+			scrn.value = "";
+		this.setState({isShowingAnswer: false});
+		switch(label) {
 			case "C":
 				scrn.value = "";
 				break;
 			case "D":
-				scrn.value = scrn.value.substring(0,scrn.value.length-1);
+				scrn.value = scrn.value.substring(0,scrn.value.length - 1);
 				break;
 			case "=":
-				if(scrn.value.length){
+				if(scrn.value.length) {
 					try {
-						scrn.value = String(Function("return "+scrn.value)());
+						scrn.value = String(Function("return " + scrn.value)());
 						scrn.style.color = "blue";
-						this.setState({isShowingAnswer: true})
+						this.setState({isShowingAnswer: true});
 					}
 					catch(err) {
 						scrn.value = errMessage;
@@ -82,18 +82,18 @@ class Keyboard extends React.Component {
 				}
 				break;
 			default:
-				scrn.value = scrn.value+label;
+				scrn.value = scrn.value + label;
 		}
-	}
+	};
 
 }
 
 ReactDOM.render(
 	<Viewer />,
 	document.getElementById('viewer')
-)
+);
 
 ReactDOM.render(
-  <Keyboard />,
-  document.getElementById('keyboard')
+	<Keyboard />,
+	document.getElementById('keyboard')
 );
